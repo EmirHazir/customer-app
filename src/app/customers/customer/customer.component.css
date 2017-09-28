@@ -1,0 +1,12 @@
+.img{
+    float: left;
+    margin: 5px;
+    border-radius: 10px;    
+}
+
+.burder{
+    border: solid 2px #000;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
