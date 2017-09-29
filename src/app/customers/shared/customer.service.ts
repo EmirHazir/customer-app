@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Customer } from './customer.model';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../environments/environment';
+
+
+const url = environment.apiEndpoint + '/customers';
 
 @Injectable()
 export class CustomerService {
 
-  constructor(private http : Http) { }
+  constructor(private http : HttpClient) { }
 
-  getCustomers(): Observable<Customer[]>{
+  get(): Observable<Customer[]>{
     return this.http
-    .get('http://cs2017lbilde.azurewebsites.net/api/customers')
-    .map(res => res.json());
+    .get<Customer[]>(url);
+  }
+
+  getById(id : number): Observable<Customer>{
+    return this.http
+    .get<Customer>(url + '/' + id);
   }
 }
