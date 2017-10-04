@@ -22,4 +22,6 @@ export class CustomerDetailComponent implements OnInit {
     .subscribe(customer => this.customer = customer);
   }
 
+  
+
 }

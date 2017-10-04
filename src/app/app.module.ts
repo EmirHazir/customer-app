@@ -10,6 +10,8 @@ import { CustomerService } from './customers/shared/customer.service';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 const appRoutes : Routes = [
   {path:'customer/:id', component: CustomerDetailComponent},
   {path:'customers',component: CustomerListComponent, data:{title:'Customer List'}},
@@ -29,6 +31,7 @@ const appRoutes : Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    NgbModule.forRoot(),
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

@@ -1,3 +1,50 @@
-<button routerLinl="/customers" routerLinkActive="active">Back</button>
-
-{{customer | json}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <button class="btn btn-outline-success" routerLink="/customers" routerLinkActive="active">Back
+    </button>
+      <hr>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <h4 class="card-header">Customer Details</h4>
+            <div class="card-body row">
+              <div class="col-md-4">
+                <img class="img" src="http://via.placeholder.com/275x275">
+              </div>
+              <div class="col-md-8">
+                  <dl class="row">
+                      <dt class="col-md-2">First Name : </dt>
+                      <dd class="col-md-10">{{cutomer?.firstName}}</dd>
+                  </dl>
+                  <dl class="row">
+                      <dt class="col-md-2">Last Name : </dt>
+                      <dd class="col-md-10">{{cutomer?.lastName}}</dd>
+                  </dl>
+                  <dl class="row">
+                      <dt class="col-md-2">Addresses : </dt>
+                      <dd class="col-md-10">
+                        <ul class="list-unstyled">
+                          <li *ngFor="let address of customer?.addresses">
+                            {{addreses.street}} {{addreses.number}}, {{addresses.city}}
+                          </li>
+                        </ul>
+                      </dd>
+                  </dl>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent">
+              <div class="pull-right">
+                <button class="btn btn-outline-danger">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                </button>
+              <button class="btn btn-outline-warning">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Update
+              </button>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

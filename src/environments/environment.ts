@@ -6,4 +6,5 @@
 export const environment = {
   production: false,
   apiEndpoint : 'http://localhost:4200/api'
+  // apiEndpoint : 'http://cs2017lbilde.azurewebsites.net/api'
 };
