@@ -16,18 +16,18 @@
               <div class="col-md-8">
                   <dl class="row">
                       <dt class="col-md-2">First Name : </dt>
-                      <dd class="col-md-10">{{cutomer?.firstName}}</dd>
+                      <dd class="col-md-10">{{customer?.firstName}}</dd>
                   </dl>
                   <dl class="row">
                       <dt class="col-md-2">Last Name : </dt>
-                      <dd class="col-md-10">{{cutomer?.lastName}}</dd>
+                      <dd class="col-md-10">{{customer?.lastName}}</dd>
                   </dl>
                   <dl class="row">
                       <dt class="col-md-2">Addresses : </dt>
                       <dd class="col-md-10">
                         <ul class="list-unstyled">
                           <li *ngFor="let address of customer?.addresses">
-                            {{addreses.street}} {{addreses.number}}, {{addresses.city}}
+                            {{address.street}} {{address.number}}, {{address.city}}
                           </li>
                         </ul>
                       </dd>
@@ -35,12 +35,20 @@
               </div>
             </div>
             <div class="card-footer bg-transparent">
-              <div class="pull-right">
-                <button class="btn btn-outline-danger">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+              <div class="pull-right" *ngIf="!confirmDelete">
+                <button class="btn btn-outline-danger" (click)="delete()">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </button>
               <button class="btn btn-outline-warning">
-                <i class="fa fa-pencil" aria-hidden="true"></i> Update
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              </div>
+              <div class="pull-right" *ngIf="confirmDelete">
+                <button class="btn btn-outline-danger" (click)="deleteConfirmed()">
+                  Are you sure?
+                </button>
+              <button class="btn btn-outline-info" (click)="abortDelete()">
+                 Cancel
               </button>
               </div>
             </div>

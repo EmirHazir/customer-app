@@ -24,7 +24,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   details(customer : Customer){
-    this.router.navigateByUrl('/customer' + customer.id);
+    this.router.navigateByUrl('/customer/' + customer.id);
   }
 
 }

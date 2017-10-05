@@ -1,4 +1,25 @@
-<h2>Customers</h2>
-<app-customer [customer]="item" 
-*ngFor="let item of customers"
-(click)="details(customer)"></app-customer>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <h2>Customers</h2>
+      <hr>
+    </div>
+    <div class="col-md-12">
+      <div class="list-group">
+        <div (click)="details(customer)" *ngFor="let customer of customers" class="list-group-item list-group-item-action">
+          <img src="http://via.placeholder.com/64x64" class="rounded float-left img">
+          <h5>{{customer.firstName}} {{customer.lastName}}</h5>
+          <div class="pull-right">
+            <button class="btn btn-outline-danger">
+            Delete
+            </button>
+            <button class="btn btn-outline-warning">
+             Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
