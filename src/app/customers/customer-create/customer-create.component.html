@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <button class="btn btn-outline-success"
+              (click)="back()">Back
+      </button>
+      <h4>Create new Customer</h4>
+      <hr>
+    </div>
+    <div class="col-md-12">
+      <form (ngSubmit)="save()" [formgroup]="customerGroup" novalidate>
+        <div class="form-group">
+          <label class="center-block">First Name : 
+            <input class="form-control" formControlName="firstName">
+          </label>
+          <label class="center-block">Last Name : 
+            <input class="form-control" formControlName="lastName">
+          </label>
+          <button type="submit" class="btn btn-outline-info" [disabled]="customerGroup.invalid">
+           <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        </div>
+      </form>
+      {{customerGroup.value | json}}
+      {{customerGroup.status | json}}
+    </div>
+  </div>
+</div>
