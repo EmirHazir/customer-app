@@ -2,8 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <hr>
-      <button class="btn btn-outline-success"
-              (click)="back()">Back
+      <button class="btn btn-outline-success" (click)="back()">Back
       </button>
       <h4>Create new Customer</h4>
       <hr>
@@ -11,18 +10,44 @@
     <div class="col-md-12">
       <form (ngSubmit)="save()" [formgroup]="customerGroup" novalidate>
         <div class="form-group">
-          <label class="center-block">First Name : 
-            <input class="form-control" formControlName="firstName">
+          <label class="center-block col-md-12">First Name : 
+            <input class="form-control" 
+            [ngClass]="{
+              'is-invalid': isInvalid('firstName'),
+              'is-valid': isValid('firstName')}" 
+            formControlName="firstName"
+            placeholder="Emir">
+            <div *ngIf="isInvalid('firstName')" 
+                        class="invalid-feedback">
+             you need to add first name
+            </div>
+            <div *ngIf="customerGroup.controls['firstName'].errors.required
+                  || customerGroup.controls['firstName'].errors.minlength">
+            Name is must be 3 char
+            </div>   
           </label>
-          <label class="center-block">Last Name : 
-            <input class="form-control" formControlName="lastName">
+          <label class="center-block col-md-12">Last Name : 
+            <input class="form-control" [ngClass]="{
+              'is-invalid': isInvalid('lastName'),
+              'is-valid': isValid('lastName')}" 
+            formControlName="lastName"
+            placeholder="Hazir">
+            <div *ngIf="isInvalid('lastName')" 
+                        class="invalid-feedback">
+            you need to add last name
+            </div>
+            <div *ngIf="customerGroup.controls['lastName'].errors.required
+                  || customerGroup.controls['lastName'].errors.minlength">
+            Name is must be 3 char
+            </div>
           </label>
-          <button type="submit" class="btn btn-outline-info" [disabled]="customerGroup.invalid">
+          
+          <button type="submit" class="btn btn-outline-info pull-right" [disabled]="customerGroup.invalid">
            <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
         </div>
       </form>
-      {{customerGroup.value | json}}
-      {{customerGroup.status | json}}
+      <ngb-alert type="success" (close)="closeAlert()" *ngIf="customerCreatedSuccess">Customer is created</ngb-alert>
+      {{customerGroup.value | json}} {{customerGroup.status | json}}
     </div>
   </div>
 </div>

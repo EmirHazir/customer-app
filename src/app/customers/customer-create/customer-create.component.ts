@@ -12,6 +12,7 @@ import { Customer } from '../shared/customer.model';
 export class CustomerCreateComponent implements OnInit {
 
   customerGroup: FormGroup;
+  customerCreatedSuccess = false;
   constructor(private router:Router, 
               private formBuilder: FormBuilder,
               private customerService: CustomerService) { 
@@ -24,8 +25,22 @@ export class CustomerCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  isInvalid(controlName:string) {
+    const control = this.customerGroup.controls[controlName];
+    return control.invalid && (control.touched || control.dirty);
+  }
+
+  isValid(controlName:string) {
+    const control = this.customerGroup.controls[controlName];
+    return !control.invalid && (control.touched || control.dirty);
+  }
+
   back(){
     this.router.navigateByUrl('/customers')
+  }
+
+  closeAlert(){
+    this.customerCreatedSuccess = false;
   }
 
   save(){
@@ -35,10 +50,15 @@ export class CustomerCreateComponent implements OnInit {
       lastName : values.lastName,
       addresses : []
     };
+
     this.customerService.create(customer)
     .subscribe(customer => {
       this.customerGroup.reset();
-    })
+      this.customerCreatedSuccess = true;
+      setTimeout(() =>{
+        this.customerCreatedSuccess = false;
+      },1500);
+    });
   }
 
 }
