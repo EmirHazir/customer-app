@@ -11,6 +11,7 @@ import { CustomerDetailComponent } from './customers/customer-detail/customer-de
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CustomerCreateComponent } from './customers/customer-create/customer-create.component';
+import { AddressListComponent } from './addresses/address-list/address-list.component';
 
 const appRoutes : Routes = [
   {path:'customer/:id', component: CustomerDetailComponent},
@@ -25,7 +26,8 @@ const appRoutes : Routes = [
     AppComponent,
     CustomerListComponent,
     CustomerDetailComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    AddressListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let address of addresses; let i = index">
+    <i class="fa fa-address-card-o"></i>
+    {{address.street}} {{address.number}} {{address.city}} 
+    <div class="pull-right">
+      <button (click)="delete(i, $event)" class="btn btn-outline-danger">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-outline-warning">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
+    </div>
+  </li>
+</ul>
+<hr>
+
+<form [formGroup]="addressGroup" (submit)="saveAddress()">
+  <div class="form-group">
+    <label class="center-block">
+      Street: 
+      <input class="form-control" 
+              formControlName="street">
+    </label>
+    <label class="center-block">
+        Number: 
+        <input class="form-control" 
+                formControlName="number">
+      </label>
+      <label class="center-block">
+          City: 
+          <input class="form-control" 
+                  formControlName="city">
+        </label>
+        <button type="submit" class="btn btn-outline-success">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+  </div>
+</form>

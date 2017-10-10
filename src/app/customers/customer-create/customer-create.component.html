@@ -39,6 +39,14 @@
             <div *ngIf="customerGroup.controls['lastName'].errors.required
                   || customerGroup.controls['lastName'].errors.minlength">
             Name is must be 3 char
+            </div> 
+          </label>
+          <label class="center-block col-md-12">
+            Address : 
+            <div class="card">
+              <div class="card-body">
+                <app-address-list></app-address-list> 
+              </div>
             </div>
           </label>
           
