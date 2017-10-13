@@ -12,6 +12,7 @@ import { CustomerDetailComponent } from './customers/customer-detail/customer-de
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CustomerCreateComponent } from './customers/customer-create/customer-create.component';
 import { AddressListComponent } from './addresses/address-list/address-list.component';
+import { AddressService } from './addresses/shared/address.service';
 
 const appRoutes : Routes = [
   {path:'customer/:id', component: CustomerDetailComponent},
@@ -36,7 +37,8 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, 
+              AddressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

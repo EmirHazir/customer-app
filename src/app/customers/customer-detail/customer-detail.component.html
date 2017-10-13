@@ -25,11 +25,9 @@
                   <dl class="row">
                       <dt class="col-md-2">Addresses : </dt>
                       <dd class="col-md-10">
-                        <ul class="list-unstyled">
-                          <li *ngFor="let address of customer?.addresses">
-                            {{address.street}} {{address.number}}, {{address.city}}
-                          </li>
-                        </ul>
+                        <app-address-list [addresses]="customer?.addresses">
+                          
+                        </app-address-list>
                       </dd>
                   </dl>
               </div>

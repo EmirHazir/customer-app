@@ -4,5 +4,6 @@ export class Customer {
     id?: number;
     firstName : string;
     lastName :  string;
-    addresses : Address[];
+    addresses? : Address[];
+    addressIds? : number[];
 }
